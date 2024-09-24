@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accueil</title>
+</head>
+<body>
+    <h1>Bienvenue sur notre site</h1>
+    <a href="{% url 'welcome' %}">Services</a>
+    <a href="{% url 'description' %}">Description</a>
+    {% if user.is_authenticated %}
+        <p>Bienvenue, {{ user.username }}!</p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Se déconnecter</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Se connecter</a> |
+        <a href="{% url 'register' %}">S'inscrire</a>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Description du Week-End</title>
+</head>
+<body>
+    <h1>Description du Week-End d'Intégration</h1>
+    <p>Actuelle Description: {{ weekend.description }}</p>
+
+    <h2>Modifier la Description</h2>
+    <form method="post" action="{% url 'description' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Mettre à jour</button>
+    </form>
+
+    <a href="{% url 'home' %}">Retour à l'accueil</a>
+</body>
+</html>

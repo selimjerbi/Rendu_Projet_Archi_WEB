@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bienvenue</title>
+</head>
+<body>
+    <h1>Bienvenue, {{ user.username }}!</h1>
+    <a href="{% url 'home' %}">Retour à l'accueil</a>
+
+    <h2>Services proposés :</h2>
+    <ul>
+        {% for service in services %}
+            <li>
+                <h3>{{ service.name }}</h3>
+                <p>Description : {{ service.description }}</p>
+                <p>Prix : {{ service.price }}€</p>
+            </li>
+        {% empty %}
+            <li>Aucun service disponible pour le moment.</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Bouton pour ajouter un nouveau service -->
+    <a href="{% url 'add_service' %}">
+        <button>Ajouter un Service</button>
+    </a>
+</body>
+</html>
